@@ -12,6 +12,7 @@ import Certifications from './pages/Certifications'
 import Education from './pages/Education'
 import Resume from './pages/Resume'
 import Contact from './pages/Contact'
+import HireMe from './pages/HireMe'
 import './App.css'
 
 function AppLayout() {
@@ -58,6 +59,8 @@ function AppLayout() {
           <Route path="/education" element={<Education />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/hire-me" element={<HireMe />} />
+          <Route path="/hire" element={<HireMe />} />
         </Routes>
       </main>
     </div>
