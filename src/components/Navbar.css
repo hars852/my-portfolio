@@ -293,14 +293,48 @@
   .app-navbar {
     left: 0 !important;
     right: 0 !important;
-    padding: 0 16px;
-    height: 64px;
+    padding: 0 12px;
+    height: 62px;
+  }
+  .navbar-left {
+    gap: 8px;
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
   }
   .navbar-toggle-btn {
     display: flex;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
   }
   .navbar-mobile-brand {
     display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .mobile-brand-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .mobile-brand-meta {
+    min-width: 0;
+    overflow: hidden;
+  }
+  .mobile-brand-name {
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    max-width: 120px;
+  }
+  .mobile-brand-role {
+    display: none;
   }
   .navbar-desktop-brand {
     display: none !important;
@@ -308,22 +342,51 @@
   .navbar-center {
     display: none !important;
   }
+  .navbar-right {
+    gap: 8px;
+    flex-shrink: 0;
+  }
   .navbar-cta-btn {
     display: flex !important;
     padding: 6px 12px;
     font-size: 11.5px;
     border-radius: 50px;
     gap: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .navbar-cta-btn span {
+    white-space: nowrap;
   }
   .theme-btn-label {
     display: none;
   }
   .navbar-theme-btn {
-    padding: 9px;
-    border-radius: 12px;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    flex-shrink: 0;
   }
   .theme-btn-icon {
     width: 22px;
     height: 22px;
+  }
+}
+
+@media (max-width: 420px) {
+  .app-navbar {
+    padding: 0 10px;
+  }
+  .mobile-brand-name {
+    max-width: 85px;
+    font-size: 12px;
+  }
+  .navbar-cta-btn {
+    padding: 5px 9px;
+    font-size: 11px;
   }
 }

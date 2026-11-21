@@ -512,34 +512,84 @@
 
 /* Responsive */
 @media (max-width: 680px) {
+  .hire-modal-backdrop {
+    padding: 12px 10px;
+  }
   .hire-modal-card {
-    padding: 24px 16px 18px;
+    padding: 20px 14px 16px;
+    max-height: 94vh;
+  }
+  .hire-header-top-bar {
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .hire-availability-pill {
+    max-width: calc(100% - 46px);
+    font-size: 11px;
+    padding: 3px 10px;
+    line-height: 1.25;
+  }
+  .hire-modal-close-btn {
+    flex-shrink: 0;
   }
   .hire-profile-row {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
     gap: 12px;
   }
+  .hire-avatar-container,
+  .hire-avatar-badge {
+    width: 50px;
+    height: 50px;
+    font-size: 17px;
+  }
   .hire-modal-title {
-    font-size: 20px;
+    font-size: 19px;
+  }
+  .hire-modal-subtitle {
+    font-size: 12.5px;
   }
   .hire-channel-row {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
-    padding: 14px 14px;
+    gap: 10px;
+    padding: 12px;
+  }
+  .hire-channel-header {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .hire-channel-value {
+    font-size: 12.5px;
+    word-break: break-all;
+    overflow-wrap: anywhere;
   }
   .hire-channel-actions {
     width: 100%;
     justify-content: flex-end;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .hire-copy-btn {
+    padding: 6px 10px;
+    font-size: 11.5px;
+  }
+  .hire-cta-primary,
+  .hire-cta-secondary,
+  .hire-cta-whatsapp {
+    padding: 6px 12px;
+    font-size: 11.5px;
   }
   .hire-modal-footer {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
+    padding-top: 14px;
   }
   .hire-footer-call {
     width: 100%;
     justify-content: center;
+    font-size: 12px;
+    padding: 8px 12px;
   }
 }
