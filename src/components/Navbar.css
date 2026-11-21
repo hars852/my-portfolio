@@ -267,6 +267,8 @@
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
+  border: none;
+  cursor: pointer;
   transition: all 0.25s ease;
   box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
 }
@@ -274,6 +276,10 @@
 .navbar-cta-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(139, 92, 246, 0.45);
+}
+
+.navbar-cta-btn:active {
+  transform: scale(0.96);
 }
 
 /* Responsive Media Queries */
@@ -303,7 +309,11 @@
     display: none !important;
   }
   .navbar-cta-btn {
-    display: none !important;
+    display: flex !important;
+    padding: 6px 12px;
+    font-size: 11.5px;
+    border-radius: 50px;
+    gap: 4px;
   }
   .theme-btn-label {
     display: none;
