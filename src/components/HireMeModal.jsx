@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import {
   X, Mail, Phone, FileText, ArrowRight, Check, Copy,
-  Sparkles, CheckCircle2, ExternalLink
+  CheckCircle2, ExternalLink
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import './HireMeModal.css'
@@ -60,163 +60,189 @@ export default function HireMeModal({ isOpen, onClose }) {
 
   return (
     <div className="hire-modal-backdrop" onClick={onClose}>
-      <div className="hire-modal-card glass" onClick={(e) => e.stopPropagation()}>
-        {/* Close Button */}
-        <button
-          type="button"
-          className="hire-modal-close"
-          onClick={onClose}
-          aria-label="Close modal"
-          title="Close (Esc)"
-        >
-          <X size={18} />
-        </button>
+      <div className="hire-modal-card" onClick={(e) => e.stopPropagation()}>
+        {/* Top Gradient Accent Line */}
+        <div className="hire-modal-accent" />
 
         {/* Modal Header */}
         <div className="hire-modal-header">
-          <div className="hire-avatar-wrap">
-            <div className="hire-avatar">HP</div>
-            <span className="hire-status-dot" />
-          </div>
-          <div className="hire-header-info">
-            <div className="hire-badge">
-              <Sparkles size={13} />
-              <span>Available For Hire · Immediate Joining</span>
+          <div className="hire-header-top-bar">
+            <div className="hire-availability-pill">
+              <span className="hire-pulse-dot" />
+              <span>Available for Hire · Immediate Joining</span>
             </div>
-            <h3 className="hire-name">Hire Harsh Prajapati</h3>
-            <p className="hire-role">
-              Frontend &amp; MERN Stack Developer · Limbani Software
-            </p>
-            <p className="hire-loc">
-              📍 Halol, Gujarat, India · Open to On-site, Hybrid &amp; Remote
-            </p>
+            <button
+              type="button"
+              className="hire-modal-close-btn"
+              onClick={onClose}
+              aria-label="Close modal"
+              title="Close (Esc)"
+            >
+              <X size={18} />
+            </button>
+          </div>
+
+          <div className="hire-profile-row">
+            <div className="hire-avatar-container">
+              <div className="hire-avatar-ring" />
+              <div className="hire-avatar-badge">HP</div>
+            </div>
+            <div className="hire-profile-details">
+              <h2 className="hire-modal-title">
+                Let's Connect &amp; <span className="grad-text">Work Together</span>
+              </h2>
+              <p className="hire-modal-subtitle">
+                Harsh Prajapati · <strong>Frontend &amp; MERN Stack Developer</strong>
+              </p>
+              <div className="hire-meta-tags">
+                <span className="hire-meta-item">🏢 Limbani Software</span>
+                <span className="hire-meta-item">📍 Halol, Gujarat</span>
+                <span className="hire-meta-item">💼 Full-time / Remote</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Quick Decision Chips */}
-        <div className="hire-chips-row">
-          <span className="hire-chip">⚡ React.js / Node.js</span>
-          <span className="hire-chip">📦 CRM Platforms</span>
-          <span className="hire-chip">🤖 AI Agents &amp; Workflows</span>
-          <span className="hire-chip">🎓 B.E. IT (7.67 CGPA)</span>
-        </div>
-
-        {/* Primary Recruiter Action Channels */}
-        <div className="hire-actions-grid">
+        {/* Channels List */}
+        <div className="hire-channels-list">
           {/* Email Channel */}
-          <a
-            href="mailto:hp0920230@gmail.com?subject=Job%20Opportunity%20%7C%20Interview%20Invitation%20-%20Harsh%20Prajapati&body=Hi%20Harsh,%0D%0A%0D%0AWe%20reviewed%20your%20portfolio%20and%20would%20love%20to%20invite%20you%20for%20an%20interview%20regarding%20a%20developer%20role%20at%20our%20company.%0D%0A%0D%0ARole:%20%0D%0ACompany:%20%0D%0ALocation/Remote:%20%0D%0A"
-            className="hire-action-card email"
-            title="Compose direct job inquiry email"
-          >
-            <div className="hire-card-icon email-icon">
+          <div className="hire-channel-row email-highlight">
+            <div className="hire-channel-icon-wrap email">
               <Mail size={22} />
             </div>
-            <div className="hire-card-content">
-              <div className="hire-card-title">Send Job Inquiry Email</div>
-              <div className="hire-card-desc">hp0920230@gmail.com</div>
-              <div className="hire-card-meta">Pre-filled interview subject line</div>
+            <div className="hire-channel-info">
+              <div className="hire-channel-header">
+                <span className="hire-channel-title">Direct Email</span>
+                <span className="hire-channel-badge">Recommended for HR</span>
+              </div>
+              <div className="hire-channel-value">hp0920230@gmail.com</div>
+              <div className="hire-channel-desc">
+                Pre-formatted hiring &amp; interview invitation template
+              </div>
             </div>
-            <div className="hire-card-btn">
-              <span>Compose</span>
-              <ArrowRight size={14} />
+            <div className="hire-channel-actions">
+              <button
+                type="button"
+                className="hire-copy-btn"
+                onClick={handleCopyEmail}
+                title="Copy email address"
+              >
+                {copiedEmail ? <Check size={13} color="var(--green)" /> : <Copy size={13} />}
+                <span>{copiedEmail ? 'Copied' : 'Copy'}</span>
+              </button>
+              <a
+                href="mailto:hp0920230@gmail.com?subject=Job%20Opportunity%20%7C%20Interview%20Invitation%20-%20Harsh%20Prajapati&body=Hi%20Harsh,%0D%0A%0D%0AWe%20came%20across%20your%20portfolio%20and%20would%20love%20to%20invite%20you%20for%20an%20interview%20regarding%20a%20developer%20role%20at%20our%20company.%0D%0A%0D%0ARole:%20%0D%0ACompany:%20%0D%0ALocation/Remote:%20%0D%0A"
+                className="hire-cta-primary"
+              >
+                <span>Send Email</span>
+                <ArrowRight size={14} />
+              </a>
             </div>
-          </a>
+          </div>
 
           {/* LinkedIn Channel */}
-          <a
-            href="https://www.linkedin.com/in/harsh-prajapati-982304293/"
-            target="_blank"
-            rel="noreferrer"
-            className="hire-action-card linkedin"
-            title="Connect with Harsh on LinkedIn"
-          >
-            <div className="hire-card-icon linkedin-icon">
+          <div className="hire-channel-row">
+            <div className="hire-channel-icon-wrap linkedin">
               <LinkedInIcon />
             </div>
-            <div className="hire-card-content">
-              <div className="hire-card-title">Connect on LinkedIn</div>
-              <div className="hire-card-desc">linkedin.com/in/harsh-prajapati-982304293</div>
-              <div className="hire-card-meta">Direct InMail &amp; Profile Review</div>
+            <div className="hire-channel-info">
+              <div className="hire-channel-header">
+                <span className="hire-channel-title">LinkedIn Profile</span>
+                <span className="hire-channel-badge-subtle">Professional Network</span>
+              </div>
+              <div className="hire-channel-value">linkedin.com/in/harsh-prajapati-982304293</div>
+              <div className="hire-channel-desc">
+                Direct InMail, credentials, and full background
+              </div>
             </div>
-            <div className="hire-card-btn">
-              <span>Connect</span>
-              <ExternalLink size={14} />
+            <div className="hire-channel-actions">
+              <a
+                href="https://www.linkedin.com/in/harsh-prajapati-982304293/"
+                target="_blank"
+                rel="noreferrer"
+                className="hire-cta-secondary"
+              >
+                <span>View Profile</span>
+                <ExternalLink size={14} />
+              </a>
             </div>
-          </a>
+          </div>
 
-          {/* WhatsApp / Phone Channel */}
-          <a
-            href="https://wa.me/919313945479?text=Hi%20Harsh,%20I%20reviewed%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20job%20opportunity."
-            target="_blank"
-            rel="noreferrer"
-            className="hire-action-card whatsapp"
-            title="Chat directly on WhatsApp"
-          >
-            <div className="hire-card-icon whatsapp-icon">
+          {/* WhatsApp & Direct Call */}
+          <div className="hire-channel-row">
+            <div className="hire-channel-icon-wrap whatsapp">
               <WhatsAppIcon />
             </div>
-            <div className="hire-card-content">
-              <div className="hire-card-title">Instant WhatsApp Chat</div>
-              <div className="hire-card-desc">+91 93139 45479</div>
-              <div className="hire-card-meta">Quickest response for HR &amp; Recruiters</div>
+            <div className="hire-channel-info">
+              <div className="hire-channel-header">
+                <span className="hire-channel-title">WhatsApp &amp; Direct Call</span>
+                <span className="hire-channel-badge-fast">Fastest Response</span>
+              </div>
+              <div className="hire-channel-value">+91 93139 45479</div>
+              <div className="hire-channel-desc">
+                Instant messaging or direct telephone call for urgent discussions
+              </div>
             </div>
-            <div className="hire-card-btn">
-              <span>Chat</span>
-              <ArrowRight size={14} />
+            <div className="hire-channel-actions">
+              <button
+                type="button"
+                className="hire-copy-btn"
+                onClick={handleCopyPhone}
+                title="Copy phone number"
+              >
+                {copiedPhone ? <Check size={13} color="var(--green)" /> : <Phone size={13} />}
+                <span>{copiedPhone ? 'Copied' : 'Copy'}</span>
+              </button>
+              <a
+                href="https://wa.me/919313945479?text=Hi%20Harsh,%20I%20reviewed%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20job%20opportunity."
+                target="_blank"
+                rel="noreferrer"
+                className="hire-cta-whatsapp"
+              >
+                <span>WhatsApp Chat</span>
+                <ArrowRight size={14} />
+              </a>
             </div>
-          </a>
+          </div>
 
-          {/* 1-Page Resume Channel */}
-          <div
-            className="hire-action-card resume"
-            onClick={handleViewResume}
-            role="button"
-            tabIndex={0}
-            title="Open 1-Page ATS Resume & PDF Download"
-          >
-            <div className="hire-card-icon resume-icon">
+          {/* 1-Page ATS Resume */}
+          <div className="hire-channel-row">
+            <div className="hire-channel-icon-wrap resume">
               <FileText size={22} />
             </div>
-            <div className="hire-card-content">
-              <div className="hire-card-title">1-Page ATS Resume</div>
-              <div className="hire-card-desc">View &amp; Export PDF Format</div>
-              <div className="hire-card-meta">Pre-formatted single page layout</div>
+            <div className="hire-channel-info">
+              <div className="hire-channel-header">
+                <span className="hire-channel-title">1-Page ATS Resume</span>
+                <span className="hire-channel-badge-subtle">ATS Single-Page Format</span>
+              </div>
+              <div className="hire-channel-value">Standard Curriculum Vitae (PDF)</div>
+              <div className="hire-channel-desc">
+                Clean single-page layout with verified skills, Limbani Software experience &amp; education
+              </div>
             </div>
-            <div className="hire-card-btn">
-              <span>View Resume</span>
-              <ArrowRight size={14} />
+            <div className="hire-channel-actions">
+              <button
+                type="button"
+                className="hire-cta-secondary"
+                onClick={handleViewResume}
+              >
+                <span>View &amp; Export</span>
+                <ArrowRight size={14} />
+              </button>
             </div>
           </div>
         </div>
 
-        {/* Footer Quick Copy Bar */}
+        {/* Modal Footer */}
         <div className="hire-modal-footer">
-          <div className="hire-footer-copy">
-            <span className="hire-footer-label">Quick Copy:</span>
-            <button
-              type="button"
-              className="copy-pill-btn"
-              onClick={handleCopyEmail}
-              title="Copy Email Address"
-            >
-              {copiedEmail ? <Check size={13} color="var(--green)" /> : <Copy size={13} />}
-              <span>{copiedEmail ? 'Copied Email!' : 'hp0920230@gmail.com'}</span>
-            </button>
-            <button
-              type="button"
-              className="copy-pill-btn"
-              onClick={handleCopyPhone}
-              title="Copy Phone Number"
-            >
-              {copiedPhone ? <Check size={13} color="var(--green)" /> : <Phone size={13} />}
-              <span>{copiedPhone ? 'Copied Number!' : '+91 93139 45479'}</span>
-            </button>
+          <div className="hire-footer-status">
+            <CheckCircle2 size={16} color="var(--green)" />
+            <span>Typically responds within a few hours</span>
           </div>
-          <div className="hire-footer-note">
-            <CheckCircle2 size={14} color="var(--green)" />
-            <span>Responds within 24 hours</span>
-          </div>
+          <a href="tel:+919313945479" className="hire-footer-call">
+            <Phone size={14} />
+            <span>Call Directly: +91 93139 45479</span>
+          </a>
         </div>
       </div>
     </div>
