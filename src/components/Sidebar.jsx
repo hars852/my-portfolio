@@ -1,9 +1,8 @@
 import { NavLink } from 'react-router-dom'
 import {
   LayoutDashboard, User, Code2, Briefcase, FolderOpen,
-  Award, GraduationCap, FileText, Mail, Phone, X, Sun, Moon
+  Award, GraduationCap, FileText, Mail, Phone, X
 } from 'lucide-react'
-import { useTheme } from '../context/ThemeContext'
 
 const GithubIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -32,8 +31,6 @@ const nav = [
 ]
 
 export default function Sidebar({ isOpen, onClose }) {
-  const { theme, toggleTheme } = useTheme()
-
   const handleNavClick = () => {
     if (onClose) onClose()
   }
@@ -76,28 +73,6 @@ export default function Sidebar({ isOpen, onClose }) {
           </NavLink>
         ))}
       </nav>
-
-      {/* Theme Switcher Toggle Pill */}
-      <div className="sidebar-theme-wrap">
-        <div className="theme-toggle-label">Appearance</div>
-        <button
-          type="button"
-          className="theme-switch-pill"
-          onClick={toggleTheme}
-          aria-label={`Current theme is ${theme}. Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-          title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-        >
-          <div className={`theme-pill-thumb ${theme}`} />
-          <div className={`theme-pill-option ${theme === 'dark' ? 'active' : ''}`}>
-            <Moon size={14} />
-            <span>Dark</span>
-          </div>
-          <div className={`theme-pill-option ${theme === 'light' ? 'active' : ''}`}>
-            <Sun size={14} />
-            <span>Light</span>
-          </div>
-        </button>
-      </div>
 
       <div className="sidebar-social">
         <a
