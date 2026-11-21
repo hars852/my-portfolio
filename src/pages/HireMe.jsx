@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import {
-  Mail, Phone, FileText, ArrowRight, Check, Copy,
+  Mail, Phone, FileText, ArrowRight, ArrowLeft, Check, Copy,
   Sparkles, CheckCircle2, ExternalLink, Briefcase, GraduationCap,
   MapPin, Clock, Award, ShieldCheck
 } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './HireMe.css'
 import './Page.css'
 
@@ -21,8 +21,17 @@ const WhatsAppIcon = () => (
 )
 
 export default function HireMe() {
+  const navigate = useNavigate()
   const [copiedEmail, setCopiedEmail] = useState(false)
   const [copiedPhone, setCopiedPhone] = useState(false)
+
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1)
+    } else {
+      navigate('/')
+    }
+  }
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('hp0920230@gmail.com')
@@ -38,6 +47,20 @@ export default function HireMe() {
 
   return (
     <div className="page hire-page animate-fade-up">
+      {/* Back Button Navigation */}
+      <div className="hire-top-bar">
+        <button
+          type="button"
+          className="hire-back-btn"
+          onClick={handleBack}
+          aria-label="Back to previous page"
+          title="Back to previous page"
+        >
+          <ArrowLeft size={16} />
+          <span>Back</span>
+        </button>
+      </div>
+
       {/* Section Header */}
       <div className="section-header">
         <div className="tag">✦ Recruiter &amp; Hiring Portal</div>
