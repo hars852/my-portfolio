@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom'
 import {
   LayoutDashboard, User, Code2, Briefcase, FolderOpen,
-  Award, GraduationCap, FileText, Mail, Phone
+  Award, GraduationCap, FileText, Mail, Phone, X, Sun, Moon
 } from 'lucide-react'
+import { useTheme } from '../context/ThemeContext'
 
 const GithubIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -15,6 +16,7 @@ const LinkedinIcon = () => (
     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
   </svg>
 )
+
 import './Sidebar.css'
 
 const nav = [
@@ -29,9 +31,26 @@ const nav = [
   { to: '/contact', icon: Mail, label: 'Contact' },
 ]
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onClose }) {
+  const { theme, toggleTheme } = useTheme()
+
+  const handleNavClick = () => {
+    if (onClose) onClose()
+  }
+
   return (
-    <aside className="sidebar glass">
+    <aside className={`sidebar glass ${isOpen ? 'open' : ''}`}>
+      {/* Mobile Close Button inside drawer */}
+      <button
+        type="button"
+        className="sidebar-close-btn"
+        onClick={onClose}
+        aria-label="Close navigation"
+        title="Close menu"
+      >
+        <X size={18} />
+      </button>
+
       <div className="sidebar-profile">
         <div className="avatar-wrap">
           <div className="avatar-ring" />
@@ -50,6 +69,7 @@ export default function Sidebar() {
             to={to}
             end={to === '/'}
             className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+            onClick={handleNavClick}
           >
             <Icon size={18} />
             <span>{label}</span>
@@ -57,17 +77,65 @@ export default function Sidebar() {
         ))}
       </nav>
 
+      {/* Theme Switcher Toggle Pill */}
+      <div className="sidebar-theme-wrap">
+        <div className="theme-toggle-label">Appearance</div>
+        <button
+          type="button"
+          className="theme-switch-pill"
+          onClick={toggleTheme}
+          aria-label={`Current theme is ${theme}. Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+        >
+          <div className={`theme-pill-thumb ${theme}`} />
+          <div className={`theme-pill-option ${theme === 'dark' ? 'active' : ''}`}>
+            <Moon size={14} />
+            <span>Dark</span>
+          </div>
+          <div className={`theme-pill-option ${theme === 'light' ? 'active' : ''}`}>
+            <Sun size={14} />
+            <span>Light</span>
+          </div>
+        </button>
+      </div>
+
       <div className="sidebar-social">
-        <a href="https://github.com/hars852" target="_blank" rel="noreferrer" className="social-btn" title="GitHub: hars852">
+        <a
+          href="https://github.com/hars852"
+          target="_blank"
+          rel="noreferrer"
+          className="social-btn"
+          title="GitHub: hars852"
+          onClick={handleNavClick}
+        >
           <GithubIcon />
         </a>
-        <a href="https://www.linkedin.com/in/harsh-prajapati-982304293/" target="_blank" rel="noreferrer" className="social-btn" title="LinkedIn: Harsh Prajapati">
+        <a
+          href="https://www.linkedin.com/in/harsh-prajapati-982304293/"
+          target="_blank"
+          rel="noreferrer"
+          className="social-btn"
+          title="LinkedIn: Harsh Prajapati"
+          onClick={handleNavClick}
+        >
           <LinkedinIcon />
         </a>
-        <a href="mailto:hp0920230@gmail.com?subject=Regarding%20Portfolio%20Inquiry%20-%20Harsh%20Prajapati" className="social-btn" title="Email: hp0920230@gmail.com">
+        <a
+          href="mailto:hp0920230@gmail.com?subject=Regarding%20Portfolio%20Inquiry%20-%20Harsh%20Prajapati"
+          className="social-btn"
+          title="Email: hp0920230@gmail.com"
+          onClick={handleNavClick}
+        >
           <Mail size={18} />
         </a>
-        <a href="https://wa.me/919313945479" target="_blank" rel="noreferrer" className="social-btn" title="WhatsApp: +91 93139 45479">
+        <a
+          href="https://wa.me/919313945479"
+          target="_blank"
+          rel="noreferrer"
+          className="social-btn"
+          title="WhatsApp: +91 93139 45479"
+          onClick={handleNavClick}
+        >
           <Phone size={17} />
         </a>
       </div>
