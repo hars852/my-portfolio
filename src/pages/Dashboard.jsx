@@ -31,9 +31,9 @@ const skillsOverview = [
 
 const recentProjects = [
   { name: 'TechBazaar', stack: 'MERN Stack · Razorpay · E-Commerce', status: 'Featured', color: '#10b981' },
-  { name: 'Netflix Clone', stack: 'React.js · JavaScript · CSS3 UI', status: 'Completed', color: '#8b5cf6' },
+  { name: 'Netflix Clone', stack: 'React.js · JavaScript · CSS3 UI', status: 'Completed', color: '#8b5cf6', liveUrl: 'https://cinimer.netlify.app/' },
   { name: 'Food Restaurant Project', stack: 'React.js · Menu Management · UX', status: 'Completed', color: '#3b82f6' },
-  { name: 'Dating App UI', stack: 'React.js · CSS3 · UI/UX Design', status: 'Showcase', color: '#f59e0b' },
+  { name: 'Dating App UI', stack: 'React.js · CSS3 · UI/UX Design', status: 'Showcase', color: '#f59e0b', liveUrl: 'https://vocal-donut-1f162e.netlify.app/step1' },
 ]
 
 export default function Dashboard() {
@@ -162,6 +162,17 @@ export default function Dashboard() {
                   <div className="rp-name">{p.name}</div>
                   <div className="rp-stack">{p.stack}</div>
                 </div>
+                {p.liveUrl && (
+                  <a
+                    href={p.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rp-live-link"
+                    title="Live Demo"
+                  >
+                    Demo <ExternalLink size={12} />
+                  </a>
+                )}
                 <span className="rp-status" style={{ color: p.color, background: `${p.color}18`, border: `1px solid ${p.color}33` }}>
                   {p.status}
                 </span>

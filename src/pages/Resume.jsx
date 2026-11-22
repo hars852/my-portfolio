@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Download, Eye, X } from 'lucide-react'
+import { Download, Eye, X, ExternalLink } from 'lucide-react'
 import './Page.css'
 
 export default function Resume() {
@@ -138,10 +138,14 @@ export default function Resume() {
             <span className="paper-project-name">1. TechBazaar:</span> MERN e-commerce platform with checkout, invoice generation &amp; admin management.
           </div>
           <div className="paper-project-item">
-            <span className="paper-project-name">4. Dating App UI:</span> Modern dating platform interface showcasing responsive UI/UX design.
+            <a href="https://vocal-donut-1f162e.netlify.app/step1" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+              <span className="paper-project-name">4. Dating App UI:</span>
+            </a> Modern dating platform interface showcasing responsive UI/UX design.
           </div>
           <div className="paper-project-item">
-            <span className="paper-project-name">2. Netflix Clone:</span> Streaming platform UI built with React.js and responsive design principles.
+            <a href="https://cinimer.netlify.app/" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+              <span className="paper-project-name">2. Netflix Clone:</span>
+            </a> Streaming platform UI built with React.js and responsive design principles.
           </div>
           <div className="paper-project-item">
             <span className="paper-project-name">5. BookHub:</span> Responsive frontend website for book catalog browsing and discovery.
@@ -280,11 +284,19 @@ export default function Resume() {
                   <div className="resume-item-desc" style={{ fontSize: 11 }}>MERN e-commerce with invoices &amp; admin.</div>
                 </div>
                 <div className="resume-item" style={{ marginBottom: 8 }}>
-                  <div className="resume-item-title" style={{ fontSize: 13 }}>4. Dating App UI</div>
+                  <a href="https://vocal-donut-1f162e.netlify.app/step1" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    <div className="resume-item-title" style={{ fontSize: 13, display: 'flex', alignItems: 'center', gap: 4 }}>
+                      4. Dating App UI <ExternalLink size={11} style={{ color: 'var(--purple)' }} />
+                    </div>
+                  </a>
                   <div className="resume-item-desc" style={{ fontSize: 11 }}>Modern dating UI/UX design.</div>
                 </div>
                 <div className="resume-item" style={{ marginBottom: 8 }}>
-                  <div className="resume-item-title" style={{ fontSize: 13 }}>2. Netflix Clone</div>
+                  <a href="https://cinimer.netlify.app/" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    <div className="resume-item-title" style={{ fontSize: 13, display: 'flex', alignItems: 'center', gap: 4 }}>
+                      2. Netflix Clone <ExternalLink size={11} style={{ color: 'var(--purple)' }} />
+                    </div>
+                  </a>
                   <div className="resume-item-desc" style={{ fontSize: 11 }}>React.js streaming platform UI.</div>
                 </div>
                 <div className="resume-item" style={{ marginBottom: 8 }}>

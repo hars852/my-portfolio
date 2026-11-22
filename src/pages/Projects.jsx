@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { ExternalLink } from 'lucide-react'
 import './Page.css'
 
 const allProjects = [
@@ -19,6 +20,7 @@ const allProjects = [
     stack: ['React.js', 'JavaScript', 'CSS3', 'Responsive Design', 'REST APIs'],
     emoji: '🎬',
     bg: 'linear-gradient(135deg, #450a0a, #991b1b)',
+    liveUrl: 'https://cinimer.netlify.app/',
   },
   {
     name: 'Food Restaurant Project',
@@ -37,6 +39,7 @@ const allProjects = [
     stack: ['React.js', 'CSS3', 'UI/UX Design', 'Responsive Layout', 'Frontend'],
     emoji: '💖',
     bg: 'linear-gradient(135deg, #831843, #be185d)',
+    liveUrl: 'https://vocal-donut-1f162e.netlify.app/step1',
   },
   {
     name: 'BookHub',
@@ -102,6 +105,18 @@ export default function Projects() {
                   <span key={si} className="stack-tag">{s}</span>
                 ))}
               </div>
+              {p.liveUrl && (
+                <div className="project-actions">
+                  <a
+                    href={p.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="project-btn primary"
+                  >
+                    <ExternalLink size={14} /> Live Demo
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         ))}

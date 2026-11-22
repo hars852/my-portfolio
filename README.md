@@ -94,9 +94,9 @@ hasrh-portfolio/
 ## 🚀 Projects Highlighted
 
 1. **TechBazaar:** Full-Stack MERN E-Commerce platform with secure checkout, invoice generation, product catalog, and administrative control.
-2. **Netflix Clone:** Streaming platform user interface built with React.js, responsive layouts, dynamic catalog sliders, and REST API integration.
+2. **Netflix Clone:** Streaming platform user interface built with React.js, responsive layouts, dynamic catalog sliders, and REST API integration. • [Live Demo](https://cinimer.netlify.app/)
 3. **Food Restaurant App:** Interactive menu browsing, cart management, and ordering workflow designed for smooth user experience.
-4. **Dating App UI:** Touch-friendly, modern dating platform UI showcasing fluid layouts and design systems.
+4. **Dating App UI:** Touch-friendly, modern dating platform UI showcasing fluid layouts and design systems. • [Live Demo](https://vocal-donut-1f162e.netlify.app/step1)
 5. **BookHub:** Responsive book exploration and search filtering catalog.
 6. **WordPress Business Website:** Fast, SEO-optimized business website designed with custom layouts and responsive principles.
 

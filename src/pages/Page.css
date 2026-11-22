@@ -303,7 +303,7 @@
   font-weight: 600;
 }
 
-.project-actions { display: flex; gap: 10px; }
+.project-actions { display: flex; gap: 10px; margin-top: 16px; }
 .project-btn {
   flex: 1;
   padding: 9px 14px;
@@ -316,6 +316,8 @@
   gap: 6px;
   transition: all 0.2s;
   border: none;
+  text-decoration: none;
+  cursor: pointer;
 }
 .project-btn.primary { background: var(--grad); color: #fff; }
 .project-btn.primary:hover { box-shadow: 0 4px 16px rgba(139,92,246,0.4); }
