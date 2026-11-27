@@ -1,18 +1,26 @@
 import { useState, useEffect } from 'react'
-import { Download, Eye, X, ExternalLink } from 'lucide-react'
+import { Download, Eye, X, ExternalLink, FileText, MapPin, Phone, Mail, CheckCircle2 } from 'lucide-react'
 import './Page.css'
 
 export default function Resume() {
   const [showFullResume, setShowFullResume] = useState(false)
 
-  // Close modal on Escape key
+  // Close modal on Escape key and lock background scroll while open
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') setShowFullResume(false)
     }
+    if (showFullResume) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
     window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [])
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [showFullResume])
 
   const handleDownloadPDF = () => {
     const prevTitle = document.title
@@ -138,20 +146,20 @@ export default function Resume() {
             <span className="paper-project-name">1. TechBazaar:</span> MERN e-commerce platform with checkout, invoice generation &amp; admin management.
           </div>
           <div className="paper-project-item">
-            <a href="https://vocal-donut-1f162e.netlify.app/step1" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
-              <span className="paper-project-name">4. Dating App UI:</span>
-            </a> Modern dating platform interface showcasing responsive UI/UX design.
-          </div>
-          <div className="paper-project-item">
-            <a href="https://cinimer.netlify.app/" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+            <a href="https://cinimer.netlify.app/" target="_blank" rel="noreferrer" className="paper-project-link">
               <span className="paper-project-name">2. Netflix Clone:</span>
             </a> Streaming platform UI built with React.js and responsive design principles.
           </div>
           <div className="paper-project-item">
-            <span className="paper-project-name">5. BookHub:</span> Responsive frontend website for book catalog browsing and discovery.
+            <span className="paper-project-name">3. Food Restaurant Project:</span> Restaurant ordering and menu management application with optimized UX.
           </div>
           <div className="paper-project-item">
-            <span className="paper-project-name">3. Food Restaurant Project:</span> Restaurant ordering and menu management application with optimized UX.
+            <a href="https://vocal-donut-1f162e.netlify.app/step1" target="_blank" rel="noreferrer" className="paper-project-link">
+              <span className="paper-project-name">4. Dating App UI:</span>
+            </a> Modern dating platform interface showcasing responsive UI/UX design.
+          </div>
+          <div className="paper-project-item">
+            <span className="paper-project-name">5. BookHub:</span> Responsive frontend website for book catalog browsing and discovery.
           </div>
           <div className="paper-project-item">
             <span className="paper-project-name">6. WordPress Business Website:</span> SEO-friendly responsive business website.
@@ -278,38 +286,38 @@ export default function Resume() {
 
               <div className="resume-section-title" style={{ marginTop: 24 }}>Key Projects</div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 12px' }}>
-                <div className="resume-item" style={{ marginBottom: 8 }}>
+              <div className="resume-projects-mini-grid">
+                <div className="resume-item" style={{ marginBottom: 4 }}>
                   <div className="resume-item-title" style={{ fontSize: 13 }}>1. TechBazaar</div>
-                  <div className="resume-item-desc" style={{ fontSize: 11 }}>MERN e-commerce with invoices &amp; admin.</div>
+                  <div className="resume-item-desc" style={{ fontSize: 11.5 }}>MERN e-commerce with invoices &amp; admin.</div>
                 </div>
-                <div className="resume-item" style={{ marginBottom: 8 }}>
-                  <a href="https://vocal-donut-1f162e.netlify.app/step1" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
-                    <div className="resume-item-title" style={{ fontSize: 13, display: 'flex', alignItems: 'center', gap: 4 }}>
-                      4. Dating App UI <ExternalLink size={11} style={{ color: 'var(--purple)' }} />
-                    </div>
-                  </a>
-                  <div className="resume-item-desc" style={{ fontSize: 11 }}>Modern dating UI/UX design.</div>
-                </div>
-                <div className="resume-item" style={{ marginBottom: 8 }}>
+                <div className="resume-item" style={{ marginBottom: 4 }}>
                   <a href="https://cinimer.netlify.app/" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
                     <div className="resume-item-title" style={{ fontSize: 13, display: 'flex', alignItems: 'center', gap: 4 }}>
                       2. Netflix Clone <ExternalLink size={11} style={{ color: 'var(--purple)' }} />
                     </div>
                   </a>
-                  <div className="resume-item-desc" style={{ fontSize: 11 }}>React.js streaming platform UI.</div>
+                  <div className="resume-item-desc" style={{ fontSize: 11.5 }}>React.js streaming platform UI.</div>
                 </div>
-                <div className="resume-item" style={{ marginBottom: 8 }}>
-                  <div className="resume-item-title" style={{ fontSize: 13 }}>5. BookHub</div>
-                  <div className="resume-item-desc" style={{ fontSize: 11 }}>Responsive book exploration web.</div>
-                </div>
-                <div className="resume-item" style={{ marginBottom: 8 }}>
+                <div className="resume-item" style={{ marginBottom: 4 }}>
                   <div className="resume-item-title" style={{ fontSize: 13 }}>3. Food Restaurant</div>
-                  <div className="resume-item-desc" style={{ fontSize: 11 }}>Restaurant ordering &amp; menu app.</div>
+                  <div className="resume-item-desc" style={{ fontSize: 11.5 }}>Restaurant ordering &amp; menu app.</div>
                 </div>
-                <div className="resume-item" style={{ marginBottom: 8 }}>
+                <div className="resume-item" style={{ marginBottom: 4 }}>
+                  <a href="https://vocal-donut-1f162e.netlify.app/step1" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    <div className="resume-item-title" style={{ fontSize: 13, display: 'flex', alignItems: 'center', gap: 4 }}>
+                      4. Dating App UI <ExternalLink size={11} style={{ color: 'var(--purple)' }} />
+                    </div>
+                  </a>
+                  <div className="resume-item-desc" style={{ fontSize: 11.5 }}>Modern dating UI/UX design.</div>
+                </div>
+                <div className="resume-item" style={{ marginBottom: 4 }}>
+                  <div className="resume-item-title" style={{ fontSize: 13 }}>5. BookHub</div>
+                  <div className="resume-item-desc" style={{ fontSize: 11.5 }}>Responsive book exploration web.</div>
+                </div>
+                <div className="resume-item" style={{ marginBottom: 4 }}>
                   <div className="resume-item-title" style={{ fontSize: 13 }}>6. WordPress Site</div>
-                  <div className="resume-item-desc" style={{ fontSize: 11 }}>SEO-friendly business website.</div>
+                  <div className="resume-item-desc" style={{ fontSize: 11.5 }}>SEO-friendly business website.</div>
                 </div>
               </div>
             </div>
@@ -328,29 +336,34 @@ export default function Resume() {
           {/* Modal Toolbar */}
           <div className="resume-modal-toolbar" onClick={(e) => e.stopPropagation()}>
             <div className="resume-modal-title">
-              📄 Harsh_Prajapati_Resume.pdf (1-Page Format)
+              <FileText size={16} className="resume-modal-title-icon" />
+              <span>Harsh_Prajapati_Resume.pdf</span>
+              <span className="resume-modal-badge">A4 · 1 Page</span>
             </div>
             <div className="resume-modal-actions">
               <button
                 onClick={handleDownloadPDF}
-                className="btn-primary"
-                style={{ padding: '8px 16px', fontSize: 13, cursor: 'pointer', border: 'none' }}
+                className="btn-primary resume-modal-dl-btn"
               >
-                <Download size={15} /> Download PDF
+                <Download size={15} />
+                <span>Download PDF</span>
               </button>
               <button
                 onClick={() => setShowFullResume(false)}
-                className="btn-outline modal-close-btn"
-                style={{ padding: '8px 14px', fontSize: 13, cursor: 'pointer' }}
+                className="modal-close-btn"
                 title="Close (Esc)"
+                aria-label="Close resume preview"
               >
-                <X size={16} /> Close
+                <X size={16} />
+                <span>Close</span>
               </button>
             </div>
           </div>
 
           {/* 1-Page Paper Resume Sheet */}
-          <PaperResumeDocument />
+          <div className="resume-paper-stage" onClick={(e) => e.stopPropagation()}>
+            <PaperResumeDocument />
+          </div>
         </div>
       )}
     </div>
